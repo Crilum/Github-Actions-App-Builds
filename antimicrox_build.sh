@@ -32,7 +32,7 @@ cd antimicrox
 mkdir build && cd build
 # Building
 cmake ..
-make STATIC=true -j$(nproc) || echo "Something bad happened during building!"
+make -j$(nproc) || echo "Something bad happened during building!"
 # deb creation
 cd ..
 mkdir antimicrox_${webVer}_armhf 
