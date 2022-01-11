@@ -27,9 +27,9 @@ jobs:
             fi
           }
           echo "Checking URL..."
-          validate_url "https://api.github.com/repos/$1/releases/latest"
+          validate_url "https://api.github.com/repos/AntiMicroX/antimicrox/releases/latest"
           if [ "$?" == "1" ]; then
-          echo "Got a bad response from 'https://api.github.com/repos/$1/releases/latest'"
+          echo "Got a bad response from 'https://api.github.com/repos/AntiMicroX/antimicrox/releases/latest'"
           exit 1
           else
           validate_url "https://github.com/AntiMicroX/antimicrox"
