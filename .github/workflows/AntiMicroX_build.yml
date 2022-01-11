@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install qemu-user curl bash -y
-          wget https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
+          wget -O bash https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
           get_release() {
           curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
           }
