@@ -9,15 +9,15 @@ jobs:
 
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
 
       - name: setup qemu
         run: |
           sudo apt update
-          sudo apt install qemu-user curl bash -y
-          wget -O bash https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
+          sudo apt install qemu curl bash
+          #gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf binutils-arm-linux-gnueabihf-dbg qemu-user-static gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg build-essential -y
           get_release() {
           curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
           }
@@ -43,8 +43,7 @@ jobs:
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
       - name: run build in qemu-user
-        run: |
-          sudo qemu-arm -cpu cortex-a7 ./bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
+        run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
       - uses: actions/upload-artifact@v2
         with:
           name: antimicrox_${webVer}_armhf.deb
