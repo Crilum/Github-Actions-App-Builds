@@ -46,6 +46,6 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: antimicrox_${{ env.VERSION }}_armhf.deb
-          path: ${{ env.BASE_DIR }}/antimicrox_${{ env.VERSION }}_armhf.deb
+          path: ${{ env.BASE_DIR }}/antimicrox/antimicrox_${{ env.VERSION }}_armhf.deb
 
           
