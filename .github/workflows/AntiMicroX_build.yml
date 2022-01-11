@@ -39,11 +39,11 @@ jobs:
           fi
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
-      - name: Run build script
-        run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
+      #- name: Run build script
+       # run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
       - uses: actions/upload-artifact@v2
         with:
           name: antimicrox_${webVer}_armhf.deb
-          path: $GITHUB_WORKSPACE/antimicrox_${webVer}_armhf.deb
+          path: $GITHUB_ENV/antimicrox_${webVer}_armhf.deb
 
           
