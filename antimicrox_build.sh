@@ -43,7 +43,7 @@ Version: ${webVer}
 Section: games
 Priority: optional
 Architecture: armhf
-Depends: qttools5-dev, qttools5-dev-tools, libsdl2-dev, libxi-dev, libxtst-dev, libx11-dev, itstool, gettext,
+Depends: qttools5-dev, qttools5-dev-tools, libsdl2-dev, libxi-dev, libxtst-dev, libx11-dev, itstool, gettext
 Maintainer: Crilum - contact on github
 Description: AntiMicroX GUI
  A graphical program used to map keyboard buttons and mouse controls to a gamepad.
