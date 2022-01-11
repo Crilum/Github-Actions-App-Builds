@@ -42,7 +42,7 @@ jobs:
           echo "VERSION=$webVer" >> $GITHUB_ENV
           echo "BASE_DIR=$GITHUB_WORKSPACE" >> $GITHUB_ENV
       - name: Run build script
-        run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
+        run: curl -q "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
       - uses: actions/upload-artifact@v2
         with:
           name: antimicrox_${{ env.VERSION }}_armhf.deb
