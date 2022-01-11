@@ -1,4 +1,4 @@
-apt install jq curl wget git gcc cmake extra-cmake-modules \
+sudo apt install jq curl wget git gcc cmake extra-cmake-modules \
 qttools5-dev qttools5-dev-tools libsdl2-dev \
 libxi-dev libxtst-dev libx11-dev itstool gettext -y
 get_release() {
