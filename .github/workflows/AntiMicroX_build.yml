@@ -17,6 +17,8 @@ jobs:
         run: |
           sudo apt update
           sudo apt install qemu-user curl bash -y
+          sudo dpkg --add-architechure armhf
+          sudo apt install bash:armhf curl:armhf apt:armhf apt-utils:armhf
       - name: run build in qemu-user
         run: |
           get_release() {
