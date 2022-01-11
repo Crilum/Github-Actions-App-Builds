@@ -1,0 +1,41 @@
+name: AntiMicroX build
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Run a multi-line script
+        run: |
+          sudo apt install jq curl wget dpkg-utils git
+          get_release() {
+            curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
+          }
+          function validate_url(){
+            if command wget -q --spider "$1"; then
+              return 0
+            else
+              return 1
+            fi
+          }
+          echo "Checking URL..."
+          validate_url "https://api.github.com/repos/$1/releases/latest"
+          if [ "$?" == "1" ]; then
+          echo "Got a bad response from 'https://api.github.com/repos/$1/releases/latest'"
+          exit 1
+          else
+          validate_url "https://github.com/AntiMicroX/antimicrox"
+          elif [ "$?" == "1" ]; then
+          echo "Got a bad response from 'https://github.com/AntiMicroX/antimicrox'"
+          exit 1
+          fi
+          webVer=$(get_release AntiMicroX/antimicrox)
+          
