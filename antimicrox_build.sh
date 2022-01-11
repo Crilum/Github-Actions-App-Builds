@@ -48,9 +48,11 @@ Maintainer: Crilum - contact on github
 Description: AntiMicroX GUI
  A graphical program used to map keyboard buttons and mouse controls to a gamepad.
  Useful for playing games with no gamepad support." > antimicrox_${webVer}_armhf/DEBIAN/control
+chmod 775 antimicrox_${webVer}_armhf/DEBIAN/control
 touch antimicrox_${webVer}_armhf/DEBIAN/postinst
 echo "#!/bin/bash
 sudo chmod 775 /usr/bin/antimicrox
 exit 0" > antimicrox_${webVer}_armhf/DEBIAN/postinst
+chmod 775 antimicrox_${webVer}_armhf/DEBIAN/postinst
 # Build it
 dpkg-deb --build antimicrox_${webVer}_armhf
