@@ -24,9 +24,13 @@ exit 1
 fi
 fi
 webVer=$(get_release AntiMicroX/antimicrox)
-
+if [ -d "antimicrox" ]; then
+cd antimicrox
+else
+rm -rf antimicrox
 git clone --branch ${webVer} https://github.com/AntiMicroX/antimicrox --depth 1
 cd antimicrox
+fi
 mkdir build && cd build
 # Building
 cmake ..
