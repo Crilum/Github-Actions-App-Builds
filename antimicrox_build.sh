@@ -25,17 +25,11 @@ fi
 fi
 webVer=$(get_release AntiMicroX/antimicrox)
 if [ -d "antimicrox" ]; then
-cd antimicrox
-else
-rm -rf antimicrox
+rm -rf antimicrox/
+fi
 git clone --branch ${webVer} https://github.com/AntiMicroX/antimicrox --depth 1
 cd antimicrox
-fi
-if [ -d "build" ]; then
-cd build
-else
 mkdir build && cd build
-fi
 # Building
 cmake ..
 make -j$(nproc) || echo "Something bad happened during building!"
