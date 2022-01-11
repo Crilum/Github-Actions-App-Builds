@@ -33,9 +33,10 @@ jobs:
           exit 1
           else
           validate_url "https://github.com/AntiMicroX/antimicrox"
-          elif [ "$?" == "1" ]; then
+          if [ "$?" == "1" ]; then
           echo "Got a bad response from 'https://github.com/AntiMicroX/antimicrox'"
           exit 1
+          fi
           fi
           webVer=$(get_release AntiMicroX/antimicrox)
           
