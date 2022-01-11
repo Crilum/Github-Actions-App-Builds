@@ -1,4 +1,4 @@
-name: AntiMicroX build
+name: Build apps
 
 # Controls when the workflow will run
 on:
@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build:
+  AntiMicroX:
     # The type of runner that the job will run on
     runs-on: self-hosted
 
@@ -39,7 +39,7 @@ jobs:
           fi
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
-      - name: Run build cript
+      - name: Run build script
         run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
       - uses: actions/upload-artifact@v2
         with:
