@@ -17,9 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install qemu-user curl bash -y
-          sudo dpkg --add-architecture armhf
-          sudo apt update
-          sudo apt install bash:armhf curl:armhf apt:armhf apt-utils:armhf
+          wget -q https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
       - name: run build in qemu-user
         run: |
           get_release() {
@@ -46,7 +44,7 @@ jobs:
           fi
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
-          sudo qemu-arm -cpu cortex-a7 /usr/bin/bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
+          sudo qemu-arm -cpu cortex-a7 bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
       - uses: actions/upload-artifact@v2
         with:
           name: antimicrox_${webVer}_armhf.deb
