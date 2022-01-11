@@ -13,11 +13,8 @@ jobs:
 
     steps:
 
-      - name: setup qemu
+      - name: Setup
         run: |
-          sudo apt update
-          sudo apt install qemu curl bash
-          #gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf binutils-arm-linux-gnueabihf-dbg qemu-user-static gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg build-essential -y
           get_release() {
           curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
           }
@@ -42,7 +39,7 @@ jobs:
           fi
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
-      - name: run build in qemu-user
+      - name: Run build cript
         run: curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash
       - uses: actions/upload-artifact@v2
         with:
