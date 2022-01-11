@@ -12,31 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Run a multi-line script
+      
+      - name: setup qemu
         run: |
-          sudo apt install jq curl wget git
-          get_release() {
-            curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
-          }
-          function validate_url(){
-            if command wget -q --spider "$1"; then
-              return 0
-            else
-              return 1
-            fi
-          }
-          echo "Checking URL..."
-          validate_url "https://api.github.com/repos/AntiMicroX/antimicrox/releases/latest"
-          if [ "$?" == "1" ]; then
-          echo "Got a bad response from 'https://api.github.com/repos/AntiMicroX/antimicrox/releases/latest'"
-          exit 1
-          else
-          validate_url "https://github.com/AntiMicroX/antimicrox"
-          if [ "$?" == "1" ]; then
-          echo "Got a bad response from 'https://github.com/AntiMicroX/antimicrox'"
-          exit 1
-          fi
-          fi
-          webVer=$(get_release AntiMicroX/antimicrox)
+          sudo apt install qemu-user curl bash -y
+      - name: run build in qemu-user
+        run: |
+          sudo qemu-arm -cpu cortex-a7 /usr/bin/bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
+
           
