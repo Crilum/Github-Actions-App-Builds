@@ -15,6 +15,7 @@ jobs:
 
       - name: setup qemu
         run: |
+          sudo apt update
           sudo apt install qemu-user curl bash -y
       - name: run build in qemu-user
         run: |
