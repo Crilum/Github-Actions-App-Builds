@@ -44,6 +44,7 @@ jobs:
           fi
           echo "Done."
           webVer=$(get_release AntiMicroX/antimicrox)
+          
           sudo qemu-arm -cpu cortex-a7 ./bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
       - uses: actions/upload-artifact@v2
         with:
