@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install qemu-user curl bash -y
-          wget -q https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
+          wget https://github.com/Crilum/Github-Actions-App-Builds/blob/main/resources/bash?raw=true
           get_release() {
           curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
           }
@@ -41,10 +41,9 @@ jobs:
           fi
           fi
           echo "Done."
+          webVer=$(get_release AntiMicroX/antimicrox)
       - name: run build in qemu-user
         run: |
-          webVer=$(get_release AntiMicroX/antimicrox)
-          
           sudo qemu-arm -cpu cortex-a7 ./bash -c 'curl "https://raw.githubusercontent.com/Crilum/Github-Actions-App-Builds/main/antimicrox_build.sh" | bash'
       - uses: actions/upload-artifact@v2
         with:
