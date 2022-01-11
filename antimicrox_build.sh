@@ -32,12 +32,15 @@ cd antimicrox
 mkdir build && cd build
 # Building
 cmake ..
-make -j$(nproc) || echo "Something bad happened during building!"
+make STATIC=true -j$(nproc) || echo "Something bad happened during building!"
 # deb creation
 cd ..
 mkdir antimicrox_${webVer}_armhf 
 mkdir antimicrox_${webVer}_armhf/DEBIAN
 mkdir -p antimicrox_${webVer}_armhf/usr/bin/
+mkdir -p antimicrox_${webVer}_armhf/usr/share/applications
+mkdir -p antimicrox_${webVer}_armhf/usr/share/icons
+mkdir -p antimicrox_${webVer}_armhf/usr/share/
 cp build/bin/antimicrox antimicrox_${webVer}_armhf/usr/bin/antimicrox
 touch antimicrox_${webVer}_armhf/DEBIAN/control
 echo "Package: antimicrox
@@ -45,11 +48,12 @@ Version: ${webVer}
 Section: games
 Priority: optional
 Architecture: armhf
-Depends: qttools5-dev, qttools5-dev-tools, libsdl2-dev, libxi-dev, libxtst-dev, libx11-dev, itstool, gettext
+Depends: qtbase5-dev (>= 5.8), libsdl2-2.0-0 (>= 2.0.6), libc6
 Maintainer: Crilum - contact on github
-Description: AntiMicroX GUI
- A graphical program used to map keyboard buttons and mouse controls to a gamepad.
- Useful for playing games with no gamepad support." > antimicrox_${webVer}_armhf/DEBIAN/control
+Description: Program used to map keyboard keys and mouse controls to a gamepad.
+ AntiMicroX is a graphical program used to map gamepad buttons to keyboard, mouse, scripts and macros.
+ .
+ It is a new fork of discontinued AntiMicro." > antimicrox_${webVer}_armhf/DEBIAN/control
 chmod 775 antimicrox_${webVer}_armhf/DEBIAN/control
 touch antimicrox_${webVer}_armhf/DEBIAN/postinst
 echo "#!/bin/bash
