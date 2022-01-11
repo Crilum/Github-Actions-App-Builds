@@ -38,7 +38,7 @@ cd ..
 mkdir antimicrox_${webVer}_armhf 
 mkdir antimicrox_${webVer}_armhf/DEBIAN
 mkdir -p antimicrox_${webVer}_armhf/usr/bin/
-cp bin/antimicrox antimicrox_${webVer}_armhf/usr/bin/antimicrox
+cp build/bin/antimicrox antimicrox_${webVer}_armhf/usr/bin/antimicrox
 touch antimicrox_${webVer}_armhf/DEBIAN/control
 echo "Package: antimicrox
 Version: ${webVer}
