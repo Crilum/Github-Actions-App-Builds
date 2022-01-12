@@ -89,7 +89,8 @@ jobs:
       - name: Build
         run: |
           cd antimicrox/
-          make STATIC=true STRIP=true
+          ls -a
+          make STATIC=true STRIP=true .
       - name: Make executable
         run: chmod +x bin/*
 
