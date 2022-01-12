@@ -104,7 +104,7 @@ jobs:
         run: |
           cd antimicrox/build
           ls -a
-          cmake --build STATIC=true . --target package
+          cmake --build . --target package
           #make -B STATIC=true STRIP=true
 
       - name: Upload artifacts
