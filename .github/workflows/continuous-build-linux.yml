@@ -90,10 +90,12 @@ jobs:
       - name: Configure
         run: |
           echo $GITHUB_WORKSPACE
-          cd $GITHUB_WORKSPACE/antimicrox/
-          cmake .
+          mkdir $GITHUB_WORKSPACE/antimicrox/build
+          cd $GITHUB_WORKSPACE/antimicrox/build
+          cmake ..
       - name: Build
-        run: make STATIC=true STRIP=true $GITHUB_WORKSPACE/antimicrox
+        run: make STATIC=true STRIP=true $GITHUB_WORKSPACE/antimicrox/build
+        
       - name: Make executable
         run: chmod +x bin/*
 
