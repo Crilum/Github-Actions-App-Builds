@@ -79,7 +79,7 @@ jobs:
 
     steps:
       - name: Install build tools
-        run: apk add --no-cache coreutils git make tar zstd cmake g++ extra-cmake-modules qt5-qttools-dev sdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext
+        run: apk add --no-cache coreutils git make tar zstd cmake g++ extra-cmake-modules qt5-qttools-dev sdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext glibc
 
       - name: Clone source
         run: git clone https://github.com/AntiMicroX/antimicrox
@@ -92,12 +92,13 @@ jobs:
           echo $GITHUB_WORKSPACE
           mkdir $GITHUB_WORKSPACE/antimicrox/build
           cd $GITHUB_WORKSPACE/antimicrox/build
-          cmake ..
+          cmake .. -DCPACK_GENERATOR="DEB"
       - name: Build
         run: |
           cd antimicrox/build
           ls -a
-          make -B STATIC=true STRIP=true
+          cmake --build . --target package
+          #make -B STATIC=true STRIP=true
 
       - name: Make executable
         run: chmod +x bin/*
