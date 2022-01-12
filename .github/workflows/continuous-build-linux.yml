@@ -79,7 +79,7 @@ jobs:
 
     steps:
       - name: Install build tools
-        run: apk add --no-cache coreutils git make tar zstd
+        run: apk add --no-cache coreutils git make tar zstd cmake
 
       - name: Clone source
         run: git clone https://github.com/AntiMicroX/antimicrox
