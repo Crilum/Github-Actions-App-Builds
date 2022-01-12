@@ -94,8 +94,10 @@ jobs:
           cd $GITHUB_WORKSPACE/antimicrox/build
           cmake ..
       - name: Build
-        run: make STATIC=true STRIP=true $GITHUB_WORKSPACE/antimicrox/build
-        
+        run: |
+          make clean $GITHUB_WORKSPACE/antimicrox/build
+          make STATIC=true STRIP=true $GITHUB_WORKSPACE/antimicrox/build
+
       - name: Make executable
         run: chmod +x bin/*
 
