@@ -15,7 +15,7 @@ on:
       - '!src/freebsd/**'
       - 'include/**'
       - 'Makefile'
-      - '.github/workflows/continuous-build.yml'
+      - '.github/workflows/continuous-build-linux.yml'
 
 jobs:
   static-build:
