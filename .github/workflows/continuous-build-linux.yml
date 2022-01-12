@@ -79,7 +79,7 @@ jobs:
 
     steps:
       - name: Install build tools
-        run: apk add --no-cache coreutils git make tar zstd cmake g++ extra-cmake-modules qt5-qttools-dev sdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext glibc
+        run: apk add --no-cache coreutils git make tar zstd cmake g++ extra-cmake-modules qt5-qttools-dev sdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext
 
       - name: Clone source
         run: git clone https://github.com/AntiMicroX/antimicrox
