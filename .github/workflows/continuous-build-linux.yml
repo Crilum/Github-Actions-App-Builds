@@ -75,7 +75,9 @@ jobs:
     # - sh4eb-linux-musl
 
     runs-on: ubuntu-latest
-    container: glibc/x86_64:${{ matrix.toolchain }}
+    container:
+          image: glibc/x86_64:${{ matrix.toolchain }}
+          options: --privileged
 
     steps:
       - name: Install build tools
