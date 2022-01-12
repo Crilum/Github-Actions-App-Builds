@@ -86,12 +86,12 @@ jobs:
       - name: Fix - Stopping at filesystem boundary
         run: git init # [fix Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).]
 
-      - name: Build
+      - name: Configure
         run: |
           cd antimicrox/
-          ls -a
           cmake .
-          make STATIC=true STRIP=true .
+      - name: Build
+        run: make STATIC=true STRIP=true .
       - name: Make executable
         run: chmod +x bin/*
 
