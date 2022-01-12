@@ -90,6 +90,7 @@ jobs:
         run: |
           cd antimicrox/
           ls -a
+          cmake .
           make STATIC=true STRIP=true .
       - name: Make executable
         run: chmod +x bin/*
