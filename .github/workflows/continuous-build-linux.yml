@@ -82,15 +82,14 @@ jobs:
         run: apk add --no-cache coreutils git make tar zstd
 
       - name: Clone source
-        run: |
-          git clone https://github.com/AntiMicroX/antimicrox
-          cd antimicrox/
+        run: git clone https://github.com/AntiMicroX/antimicrox
       - name: Fix - Stopping at filesystem boundary
         run: git init # [fix Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).]
 
       - name: Build
-        run: make STATIC=true STRIP=true
-
+        run: |
+          make STATIC=true STRIP=true
+          cd antimicrox/
       - name: Make executable
         run: chmod +x bin/*
 
