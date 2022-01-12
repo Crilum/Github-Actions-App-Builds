@@ -76,7 +76,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-          image: glibc-2.34/x86_64:${{ matrix.toolchain }}
+          image: frolvlad/alpine-glibc:${{ matrix.toolchain }}
           options: --privileged
 
     steps:
