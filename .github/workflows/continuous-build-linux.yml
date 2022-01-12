@@ -76,8 +76,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-          image: frolvlad/alpine-glibc:${{ matrix.toolchain }}
-          options: --privileged
+          image: ubuntu:${{ matrix.toolchain }}
 
     steps:
       - name: Install build tools
