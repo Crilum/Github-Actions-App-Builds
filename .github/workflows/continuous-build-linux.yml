@@ -95,6 +95,7 @@ jobs:
           cmake ..
       - name: Build
         run: |
+          cd antimicrox/build
           ls -a
           make -B STATIC=true STRIP=true
 
