@@ -83,15 +83,17 @@ jobs:
 
       - name: Clone source
         run: git clone https://github.com/AntiMicroX/antimicrox
+        
       - name: Fix - Stopping at filesystem boundary
         run: git init # [fix Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).]
 
       - name: Configure
         run: |
-          cd antimicrox/
+          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/antimicrox/
           cmake .
       - name: Build
-        run: make STATIC=true STRIP=true .
+        run: make STATIC=true STRIP=true $GITHUB_WORKSPACE/antimicrox
       - name: Make executable
         run: chmod +x bin/*
 
