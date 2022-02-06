@@ -16,7 +16,7 @@ jobs:
 
       - name: Setup
         run: |
-          sudo apt install qemu curl bash
+          sudo apt install qemu-user curl bash
           get_release() {
           curl --silent "https://api.github.com/repos/$1/releases/latest" | jq -r '.tag_name' | sed s/v//g
           }
