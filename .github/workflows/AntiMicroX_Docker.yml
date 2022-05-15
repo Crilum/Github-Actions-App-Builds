@@ -30,13 +30,13 @@ jobs:
             cd antimicrox &&
             mkdir build && cd build &&
             cmake --build . --target package;
-            ls"
+            "
             
       - name: Upload
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "antimicrox/build/*"
+          artifacts: "antimicrox/build/dist/*"
           body: "# test"
           name: test-antimicrox
           tag: test-antimicrox
@@ -61,7 +61,7 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
-            QT_SELECT=5 cmake .. -DCPACK_GENERATOR="DEB" && 
+            QT_SELECT=5 cmake .. -DCPACK_GENERATOR="DEB" -DMAKE_PREFIX_PATH=/usr/include/arm-linux-gnueabihf/qt5 && 
             QT_SELECT=5 cmake --build . --target package;
             ls"
             
@@ -69,7 +69,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "antimicrox/build/*"
+          artifacts: "antimicrox/build/bin/*"
           body: "test-antimicrox"
           name: test-antimicrox
           tag: vtest-antimicrox
