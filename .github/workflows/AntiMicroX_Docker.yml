@@ -25,7 +25,7 @@ jobs:
         with:
           args: >
             bash -c
-            "apt update && apt install doxygen g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
+            "apt update && apt install -y doxygen g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
@@ -58,7 +58,7 @@ jobs:
         with:
           args: >
             bash -c
-            "apt update && apt install doxygen g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
+            "apt update && apt install -y doxygen g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
