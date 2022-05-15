@@ -29,7 +29,6 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
-            cmake .. -DCPACK_GENERATOR="DEB" &&
             cmake --build . --target package
             ls"
             
@@ -62,8 +61,8 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
-            cmake .. -DCPACK_GENERATOR="DEB" && 
-            cmake --build . --target package
+            QT_SELECT=5 cmake .. -DCPACK_GENERATOR="DEB" && 
+            QT_SELECT=5 cmake --build . --target package
             ls"
             
       - name: Upload
