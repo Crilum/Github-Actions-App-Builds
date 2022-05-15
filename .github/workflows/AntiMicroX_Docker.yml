@@ -72,7 +72,7 @@ jobs:
             cd antimicrox &&
             git checkout $webVer &&
             mkdir build && cd build &&
-            Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ cmake .. -DCPACK_GENERATOR="DEB" && 
+            CMAKE_PREFIX_PATH=/lib/arm-linux-gnueabihf/cmake/ Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ cmake .. -DCPACK_GENERATOR="DEB" && 
             cmake --build . --target package;
             ls"
             
