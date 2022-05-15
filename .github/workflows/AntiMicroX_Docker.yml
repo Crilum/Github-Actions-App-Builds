@@ -29,6 +29,7 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
+            cmake .. -DCPACK_GENERATOR="DEB" &&
             cmake --build . --target package;
             "
             
@@ -61,7 +62,7 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
-            QT_SELECT=5 cmake .. -DCPACK_GENERATOR="DEB" -DMAKE_PREFIX_PATH=/usr/include/arm-linux-gnueabihf/qt5 && 
+            QT_SELECT=5 cmake .. -DCPACK_GENERATOR="DEB" -DMAKE_PREFIX_PATH=/usr/include/arm-linux-gnueabihf/qt5/QtWidgets/ && 
             QT_SELECT=5 cmake --build . --target package;
             ls"
             
