@@ -28,7 +28,7 @@ jobs:
             "apt update && DEBIAN_FRONTEND=noninteractive apt install -y libqt5widgets5 git doxygen g++ cmake extra-cmake-modules qt5-default qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
-            git checkout $webVer
+            git checkout $webVer &&
             mkdir build && cd build &&
             cmake .. -DCPACK_GENERATOR="DEB" &&
             cmake --build . --target package;
@@ -70,7 +70,7 @@ jobs:
             "apt update && DEBIAN_FRONTEND=noninteractive apt install -y libqt5widgets5 git doxygen g++ cmake extra-cmake-modules qt5-default qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
-            git checkout $webVer
+            git checkout $webVer &&
             mkdir build && cd build &&
             Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ cmake .. -DCPACK_GENERATOR="DEB" && 
             cmake --build . --target package;
