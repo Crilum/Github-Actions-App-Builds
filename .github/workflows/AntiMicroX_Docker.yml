@@ -62,7 +62,7 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox &&
             cd antimicrox &&
             mkdir build && cd build &&
-            cmake .. -DCPACK_GENERATOR="DEB" && #-DBUILD_DOCS &&
+            cmake .. -DCPACK_GENERATOR="DEB" && 
             cmake --build . --target package
             ls"
             
