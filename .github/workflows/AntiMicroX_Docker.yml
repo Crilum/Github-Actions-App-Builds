@@ -8,7 +8,7 @@ on:
       - 'latest_release'
   workflow_dispatch:
 
-  Build-armhf:
+Build-armhf:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ on:
       - name: Set up multiarch/qemu-user-static
         run: |
           docker run --rm --privileged multiarch/qemu-user-static:register --reset
-      - uses: docker://multiarch/ubuntu-core:armhf-focal
+      - uses: docker://crilum/antimicrox-arm-build-env:armhf-latest
         with:
           args: >
             bash -c
