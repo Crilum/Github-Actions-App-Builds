@@ -32,14 +32,19 @@ jobs:
             mv *.deb ../../pkgs &&
             ls"
             
-      - name: Upload
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          artifacts: "pkgs/*"
-          body: "# test"
-          name: test-antimicrox
-          tag: test-antimicrox
+      - name: Release & Assets
+      # You may pin to the exact commit or the version.
+      # uses: Hs1r1us/Release-AIO@354b8db50d5b6310b621cb6c5e29d1f8e611aff7
+        uses: Hs1r1us/Release-AIO@v1.0
+        with: 
+          # The name of the tag
+          tag_name: AntiMicroX-${{ github.webVer }}
+        # The name of the release
+          release_name: AntiMicroX
+        # Text describing the contents of the tag
+          body: AntiMicroX arm builds - version ${{ github.webVer }}
+        # The path to the asset you want to upload
+          asset_files: pkgs/AntiMicroX-${{ github.webVer }}-aarch64.deb
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
@@ -68,20 +73,34 @@ jobs:
             cd antimicrox &&
             mkdir build && cd build &&
             cmake .. -DCPACK_GENERATOR="DEB" && 
-            CMAKE_PREFIX_PATH=/lib/arm-linux-gnueabihf/cmake/ Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ Qt5Gui_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Gui/ Qt5Network_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Network/ Qt5LinguistTools_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5LinguistTools/ Qt5Core_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Core/ Qt5Concurrent_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Concurrent/ cmake .. -DCPACK_GENERATOR="DEB" && 
+            export CMAKE_PREFIX_PATH=/lib/arm-linux-gnueabihf/cmake/ &&
+            cmake .. -DCPACK_GENERATOR="DEB" && 
             cmake --build . --target package &&
             mkdir -p ../pkgs &&
             mv *.deb ../../pkgs &&
             ls"
             
-      - name: Upload
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          artifacts: "pkgs/*"
-          body: "test-antimicrox"
-          name: test-antimicrox
-          tag: vtest-antimicrox
+      #- name: Upload
+       # uses: ncipollo/release-action@v1
+        #with:
+         # allowUpdates: true
+          #artifacts: "pkgs/*"
+          #body: "test-antimicrox"
+          #name: test-antimicrox
+          #tag: vtest-antimicrox
+      - name: Release & Assets
+      # You may pin to the exact commit or the version.
+      # uses: Hs1r1us/Release-AIO@354b8db50d5b6310b621cb6c5e29d1f8e611aff7
+        uses: Hs1r1us/Release-AIO@v1.0
+        with: 
+          # The name of the tag
+          tag_name: AntiMicroX-${{ github.webVer }}
+        # The name of the release
+          release_name: AntiMicroX
+        # Text describing the contents of the tag
+          body: AntiMicroX arm builds - version ${{ github.webVer }}
+        # The path to the asset you want to upload
+          asset_files: pkgs/AntiMicroX-${{ github.webVer }}-armv7l.deb
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
