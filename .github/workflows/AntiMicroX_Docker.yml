@@ -72,9 +72,8 @@ jobs:
             git clone https://github.com/AntiMicroX/antimicrox -b $webVer &&
             cd antimicrox &&
             mkdir build && cd build &&
-            CMAKE_PREFIX_PATH=/lib/arm-linux-gnueabihf/cmake/Qt5Gui/ &&
             Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ &&
-            Qt5Gui_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Core/ &&
+            Qt5Gui_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Gui/ &&
             Qt5Network_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Network/ &&
             Qt5LinguistTools_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5LinguistTools/ &&
             Qt5Core_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Core/ &&
