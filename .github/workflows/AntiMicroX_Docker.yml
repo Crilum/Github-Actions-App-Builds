@@ -52,7 +52,7 @@ jobs:
           name: "armhf-build_${{ env.webVer }}"
           # A file, directory or wildcard pattern that describes what to upload
           path: pkgs/*
-  Build-armh64:
+  Build-arm64:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
