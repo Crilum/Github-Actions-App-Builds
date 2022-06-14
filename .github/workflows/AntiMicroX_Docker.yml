@@ -1,4 +1,4 @@
-name: Build
+name: Build AntiMicroX with docker
 
 on:
   push:
