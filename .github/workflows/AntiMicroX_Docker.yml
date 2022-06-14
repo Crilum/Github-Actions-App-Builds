@@ -1,4 +1,4 @@
-name: Build AntiMicroX with docker
+name: Build AntiMicroX with Docker
 
 on:
   push:
@@ -41,15 +41,15 @@ jobs:
         with:
           allowUpdates: true
           artifacts: "pkgs/*"
-          body: "test-antimicrox"
-          name: test-antimicrox
-          tag: vtest-antimicrox
+          body: "arm AntiMicroX builds"
+          name: "AntiMicroX - ${{ env.webVer }}"
+          tag: "${{ env.webVer }}"
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           # Artifact name
-          name: armhf build
+          name: "armhf-build_${{ env.webVer }}"
           # A file, directory or wildcard pattern that describes what to upload
           path: pkgs/*
   Build-armh64:
@@ -83,14 +83,14 @@ jobs:
         with:
           allowUpdates: true
           artifacts: "pkgs/*"
-          body: "test-antimicrox"
-          name: test-antimicrox
-          tag: vtest-antimicrox
+          body: "arm AntiMicroX builds - version ${{ env.webVer }}"
+          name: "AntiMicroX - ${{ env.webVer }}"
+          tag: "${{ env.webVer }}"
           
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           # Artifact name
-          name: arm64 build
+          name: "arm64-build_${{ env.webVer }}"
           # A file, directory or wildcard pattern that describes what to upload
           path: pkgs/*
