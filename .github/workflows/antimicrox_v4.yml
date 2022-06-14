@@ -1,4 +1,4 @@
-name: Build
+name: Build AntiMicroX - script v4
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
       - 'latest_release'
   workflow_dispatch:
 
-Build-armhf:
+jobs:
+  Build-armhf:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
