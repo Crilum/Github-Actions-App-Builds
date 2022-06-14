@@ -1,0 +1,53 @@
+name: Build
+
+on:
+  push:
+    branches: 
+      - 'main'
+    paths: 
+      - 'latest_release'
+  workflow_dispatch:
+
+Build-armhf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup env
+        run: |
+          echo "webVer=$(curl -s https://api.github.com/repos/AntiMicroX/antimicrox/releases/latest | jq .tag_name | sed -e 's/.*tag_name//g' -e 's/"//g' -e 's/://g')" >> $GITHUB_ENV
+      - name: Set up multiarch/qemu-user-static
+        run: |
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset
+      - uses: docker://multiarch/debian-debootstrap:armhf-stretch
+        with:
+          args: >
+            bash -c
+            "apt update && DEBIAN_FRONTEND=noninteractive apt install -y libqt5widgets5 git doxygen g++ cmake extra-cmake-modules qt5-default qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext &&
+            git clone https://github.com/AntiMicroX/antimicrox -b $webVer &&
+            cd antimicrox &&
+            mkdir build && cd build &&
+            #Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ Qt5Gui_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Gui/ Qt5Network_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Network/ Qt5LinguistTools_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5LinguistTools/ Qt5Core_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Core/ Qt5Concurrent_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Concurrent/
+            cmake .. -DCPACK_GENERATOR="DEB" && 
+            make --build . --target package &&
+            mkdir -p ../pkgs &&
+            mv *.deb ../../pkgs &&
+            ls"
+            
+      - name: Upload
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: "pkgs/*"
+          body: "test-antimicrox"
+          name: test-antimicrox
+          tag: vtest-antimicrox
+          
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          # Artifact name
+          name: armhf build
+          # A file, directory or wildcard pattern that describes what to upload
+          path: pkgs/*
