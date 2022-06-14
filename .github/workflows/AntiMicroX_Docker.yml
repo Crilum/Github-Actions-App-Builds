@@ -35,7 +35,7 @@ jobs:
             echo moving packages...;
             mkdir -p ../../pkgs &&
             mv *.deb ../../pkgs/ &&
-            echo current dir: ${pwd} dir contents: $(ls -a ) pkgs dir contents: $(ls -a ../pkgs)"
+            echo -e current dir: $(pwd)\n\n$(pwd) contents: $(ls -a )\n\npkgs dir contents: $(ls -a ../../pkgs)"
             
       - name: Upload
         uses: ncipollo/release-action@v1
@@ -75,9 +75,10 @@ jobs:
             mkdir build && cd build &&
             Qt5Widgets_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Widgets/ Qt5Gui_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Gui/ Qt5Network_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Network/ Qt5LinguistTools_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5LinguistTools/ Qt5Core_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Core/ Qt5Concurrent_DIR=/lib/arm-linux-gnueabihf/cmake/Qt5Concurrent/ cmake .. -DCPACK_GENERATOR="DEB" && 
             cmake --build . --target package &&
-            mkdir -p ../pkgs &&
-            mv *.deb ../../pkgs &&
-            ls"
+            echo moving packages...;
+            mkdir -p ../../pkgs &&
+            mv *.deb ../../pkgs/ &&
+            echo -e current dir: $(pwd)\n\n$(pwd) contents: $(ls -a )\n\npkgs dir contents: $(ls -a ../../pkgs)"
             
       - name: Upload to release
         uses: ncipollo/release-action@v1
